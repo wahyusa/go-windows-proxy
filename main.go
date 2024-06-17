@@ -4,12 +4,29 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"os/exec"
 	"strings"
 )
 
+// isProxyEnabled checks if the proxy is enabled bool
+func isProxyEnabled() bool {
+	cmd := exec.Command("reg", "query", "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", "/v", "ProxyEnable")
+
+	output, err := cmd.Output()
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return strings.Contains(string(output), "0x1")
+}
+
 func menu() {
+	proxyStatus := "Off"
+	if isProxyEnabled() {
+		proxyStatus = "On"
+	}
 	fmt.Println("=====================================")
-	fmt.Println("Menu")
+	fmt.Printf("Menu | Status: %s\n", proxyStatus)
 	fmt.Println("1. On")
 	fmt.Println("2. Off")
 	fmt.Println("3. Setting")
