@@ -15,11 +15,11 @@ Sometimes, I ask why it didn't included direcly in Network / Wi-Fi settings.
 
 So I create my own...
 
-It must be easy to access and to user of course.
+It must be easy to access and to use.
 
 ## DEBUG
 
-To try this version please build your own version
+To try this version please build your own version or find the latest releases
 
 `go build -o wproxy.exe`
 
@@ -28,5 +28,7 @@ Then you can open `wproxy.exe`
 Expect to show the menu list hardcoded
 
 Users can navigate
+
+You can see your proxy status
 
 I have not implement testing here
